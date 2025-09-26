@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Bungee', sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #d1d1d1;
+}
+
+.wrapper {
+  width: 70vmin;
+  height: 75vmin;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #9e2a2b;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.detalhes {
+  color: #faf9e7;
+  font-size: 1.2rem;
+  padding: 15px;
+  text-align: center;
+}
+
+#gameCanvas {
+  flex: 1;
+  background-color: #721011;
+}
