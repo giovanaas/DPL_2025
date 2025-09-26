@@ -1,6 +1,5 @@
-// Seleciona o canvas
 var tela = document.getElementById("gameCanvas");
-var pincel = tela.getContext("2d");
+var c = tela.getContext("2d");
 
 // Tamanho do jogo
 var tamanho = 20; // tamanho de cada quadradinho
@@ -19,14 +18,11 @@ var comida = {
 
 // Score
 var pontos = 0;
-
-// Teclas pressionadas
 var teclas = {};
 
 // Direção atual da cobra
 var direcao = "right";
 
-// Eventos do teclado
 document.addEventListener("keydown", function (evento) {
   teclas[evento.key] = true;
 
@@ -44,18 +40,18 @@ document.addEventListener("keyup", function (evento) {
 // Função principal do jogo
 function desenharJogo() {
   // Fundo
-  pincel.fillStyle = "#721011";
-  pincel.fillRect(0, 0, tela.width, tela.height);
+  c.fillStyle = "#721011";
+  c.fillRect(0, 0, tela.width, tela.height);
 
   // Desenha a cobra
   for (var i = 0; i < cobra.length; i++) {
-    pincel.fillStyle = (i == 0) ? "#55d818" : "#77ff55";
-    pincel.fillRect(cobra[i].x, cobra[i].y, tamanho, tamanho);
+    c.fillStyle = (i == 0) ? "#55d818" : "#77ff55";
+    c.fillRect(cobra[i].x, cobra[i].y, tamanho, tamanho);
   }
 
   // Desenha a comida
-  pincel.fillStyle = "#FFD700";
-  pincel.fillRect(comida.x, comida.y, tamanho, tamanho);
+  c.fillStyle = "#FFD700";
+  c.fillRect(comida.x, comida.y, tamanho, tamanho);
 
   // Posição da cabeça
   var cabecaX = cobra[0].x;
@@ -87,7 +83,7 @@ function desenharJogo() {
     colisao(novaCabeca, cobra)
   ) {
     alert("Game Over! Seu score foi " + pontos);
-    document.location.reload();
+    document.location.reload(); //PROBLEMA AQUI!! VER ISSO AQUI
   }
 
   cobra.unshift(novaCabeca);
