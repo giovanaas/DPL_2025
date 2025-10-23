@@ -83,8 +83,9 @@ function desenharJogo() {
     colisao(novaCabeca, cobra)
   ) {
     alert("Game Over! Seu score foi " + pontos);
-    document.location.reload(); //PROBLEMA AQUI!! VER ISSO AQUI
+      document.location.reload(); //PROBLEMA AQUI!! VER ISSO AQUI
   }
+
 
   cobra.unshift(novaCabeca);
 }
