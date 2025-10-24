@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Página Inicial — Curso de Desenvolvimento</title>
+  <style>
+    :root{
+      --bg:#1b0a05;
+      --hot1:#ff5f1f;
+      --hot2:#ff9b3d;
+      --accent:#ffd166;
+      --glass: rgba(255,255,255,0.06);
+    }
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,var(--bg),#2b1007);color:var(--accent);}
+    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:32px;text-align:center;flex-direction:column;}
+    h1{font-family:'Press Start 2P',monospace;color:var(--hot1);font-size:22px;margin-bottom:20px;}
+    p{color:var(--hot2);font-size:16px;max-width:600px;}
+    a.btn{display:inline-block;margin-top:30px;padding:12px 18px;background:var(--hot1);color:#140b06;text-decoration:none;font-weight:700;border-radius:12px;box-shadow:0 8px 20px rgba(255,95,31,0.2);transition:transform .2s, box-shadow .2s;}
+    a.btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(255,95,31,0.3);}
+    footer{margin-top:40px;font-size:13px;color:rgba(255,255,255,0.3)}
+    canvas#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  <canvas id="bg"></canvas>
+  <div class="wrap">
+    <h1>BEM-VINDO AO CURSO DE DESENVOLVIMENTO DE APLICATIVOS!</h1>
+    <p>Explore, aprenda e divirta-se! Este é o início da sua jornada para criar experiências incríveis.</p>
+  </div>
+  <script>
+    // animação simples de fundo com partículas
+    const c=document.getElementById('bg');const ctx=c.getContext('2d');
+    let W,H,particles=[];
+    function resize(){W=window.innerWidth;H=window.innerHeight;c.width=W;c.height=H;}
+    window.addEventListener('resize',resize);resize();
+
+    function createParticles(n){particles=[];for(let i=0;i<n;i++){particles.push({x:Math.random()*W,y:Math.random()*H,r:1+Math.random()*2,dx:-1+Math.random()*2,dy:-1+Math.random()*2,clr:`rgba(255,${100+Math.random()*100},50,${0.3+Math.random()*0.5})`});}}
+    createParticles(100);
+
+    function draw(){ctx.fillStyle='rgba(27,10,5,0.3)';ctx.fillRect(0,0,W,H);for(const p of particles){ctx.beginPath();ctx.fillStyle=p.clr;ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();p.x+=p.dx;p.y+=p.dy;if(p.x<0||p.x>W)p.dx*=-1;if(p.y<0||p.y>H)p.dy*=-1;}}
+    function loop(){draw();requestAnimationFrame(loop);}loop();
+  </script>
+</body>
+</html>
